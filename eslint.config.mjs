@@ -10,7 +10,11 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  ...compat.extends("next/core-web-vitals", "next/typescript", {
+    rules: {
+      "@typescript-eslint/no-implicit-any": "warn", // Enforces no implicit any in TypeScript files
+    },
+  }),
 ];
 
 export default eslintConfig;
