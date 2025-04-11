@@ -74,7 +74,6 @@ const AuthForm = ({ type }: { type: FormType }) => {
         console.log("Sign Up", values);
         toast.success("Successfully signed up. Now please sign in");
         type = "sign-in";
-        // router.push("/");
       } else {
         const { email, password } = values;
 
@@ -89,11 +88,10 @@ const AuthForm = ({ type }: { type: FormType }) => {
         await Signin({ email, idToken });
 
         console.log("Sign In", values);
-        // router.push("/");
         toast.success("Successfully signed in");
       }
-
       form.reset();
+      router.push("/");
     } catch (error) {
       console.error(error);
       toast.error(`There was an error: ${error}`);
