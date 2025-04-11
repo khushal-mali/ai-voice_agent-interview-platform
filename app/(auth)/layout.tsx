@@ -4,6 +4,7 @@ import React from "react";
 
 const AuthLayout = async ({ children }: { children: React.ReactNode }) => {
   const isUserAuthenticated = await isAuthenticated();
+  console.log(isUserAuthenticated);
   if (isUserAuthenticated) redirect("/");
 
   return <div className="auth-layout">{children}</div>;

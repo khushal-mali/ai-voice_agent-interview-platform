@@ -6,7 +6,7 @@ import React from "react";
 
 const RootLayout = async ({ children }: { children: React.ReactNode }) => {
   const isUserAuthenticated = await isAuthenticated();
-
+  console.log(isUserAuthenticated);
   if (!isUserAuthenticated) redirect("/sign-in");
 
   return (
