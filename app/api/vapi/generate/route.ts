@@ -3,11 +3,11 @@ import { getRandomInterviewCover } from "@/lib/utils";
 import { google } from "@ai-sdk/google";
 import { generateText } from "ai";
 
-export const GET = async () => {
+export async function GET() {
   return Response.json({ success: true, data: "Thank You" }, { status: 200 });
-};
+}
 
-export const POST = async (request: Request) => {
+export async function POST(request: Request) {
   try {
     const { type, role, level, techstack, amount, userid } = await request.json();
     const { text: questions } = await generateText({
@@ -44,6 +44,9 @@ export const POST = async (request: Request) => {
     return Response.json({ success: true }, { status: 200 });
   } catch (error) {
     console.error(error);
-    return Response.json({ success: false, error }, { status: 500 });
+    return Response.json(
+      { success: false, error: error instanceof Error ? error.message : error },
+      { status: 500 }
+    );
   }
-};
+}
