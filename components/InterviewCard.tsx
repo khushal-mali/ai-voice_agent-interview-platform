@@ -4,8 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import DisplayTechItems from "./DisplayTechItems";
 import { Button } from "./ui/button";
+
 const InterviewCard = ({
-  interviewId,
+  id,
   userId,
   role,
   type,
@@ -58,13 +59,7 @@ const InterviewCard = ({
           <DisplayTechItems techStack={techstack} />
 
           <Button className="btn-primary">
-            <Link
-              href={
-                feedback
-                  ? `/interview/${interviewId}/feedback`
-                  : `/interview/${interviewId}`
-              }
-            >
+            <Link href={feedback ? `/interview/${id}/feedback` : `/interview/${id}`}>
               {feedback ? "Check Feedback" : "View Interview"}
             </Link>
           </Button>
